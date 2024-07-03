@@ -1,6 +1,45 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1720048337
+::res://::1720048666
 icon.svg::CompressedTexture2D::4592155738396493813::1720048207::1720048210::1::::<><>::
+readme.md::TextFile::-1::1720048621::0::1::::<><>::
 ::res://entities_scenes/::1720048337
 ::res://scenarios/::1720048323
-::res://sprites/::1720048257
+::res://scripts/::1720048357
+::res://sprites/::1720048934
+::res://sprites/Fire vizard/::1670308732
+Attack_1.png::CompressedTexture2D::610444744638402652::1670308050::1720048968::1::::<><>::
+Attack_2.png::CompressedTexture2D::3302119474362188842::1670308088::1720048968::1::::<><>::
+Charge.png::CompressedTexture2D::368544455202914495::1670308694::1720048968::1::::<><>::
+Dead.png::CompressedTexture2D::377047518764560846::1670308561::1720048968::1::::<><>::
+Fireball.png::CompressedTexture2D::868467062094639613::1670308161::1720048968::1::::<><>::
+Flame_jet.png::CompressedTexture2D::9029895809829570006::1670308340::1720048968::1::::<><>::
+Hurt.png::CompressedTexture2D::2958727406542248744::1670308476::1720048968::1::::<><>::
+Idle.png::CompressedTexture2D::1152995131200231024::1670307872::1720048968::1::::<><>::
+Jump.png::CompressedTexture2D::4931397512830877017::1670308398::1720048968::1::::<><>::
+Run.png::CompressedTexture2D::2090829630275368250::1670307990::1720048968::1::::<><>::
+Walk.png::CompressedTexture2D::4236239568842820789::1670307829::1720048968::1::::<><>::
+::res://sprites/Lightning Mage/::1670321328
+Attack_1.png::CompressedTexture2D::8583699623418085698::1670320712::1720048968::1::::<><>::
+Attack_2.png::CompressedTexture2D::3387894636997661899::1670320806::1720048968::1::::<><>::
+Charge.png::CompressedTexture2D::4493855888985955795::1670321328::1720048968::1::::<><>::
+Dead.png::CompressedTexture2D::3037474868887720080::1670321226::1720048968::1::::<><>::
+Hurt.png::CompressedTexture2D::3308683296236357411::1670321170::1720048968::1::::<><>::
+Idle.png::CompressedTexture2D::3300298215613087799::1670320570::1720048968::1::::<><>::
+Jump.png::CompressedTexture2D::5042400960525146841::1670321093::1720048968::1::::<><>::
+Light_ball.png::CompressedTexture2D::379904838907954508::1670320875::1720048968::1::::<><>::
+Light_charge.png::CompressedTexture2D::4684125068279645485::1670321011::1720048968::1::::<><>::
+Run.png::CompressedTexture2D::1420099415750674282::1670320628::1720048968::1::::<><>::
+Walk.png::CompressedTexture2D::5496173762394938558::1670320546::1720048968::1::::<><>::
+::res://sprites/Wanderer Magican/::1670331986
+Attack_1.png::CompressedTexture2D::50817182109827209::1670331326::1720048968::1::::<><>::
+Attack_2.png::CompressedTexture2D::4810813163962064573::1670331403::1720048968::1::::<><>::
+Charge_1.png::CompressedTexture2D::8433688258529255711::1670331907::1720048968::1::::<><>::
+Charge_2.png::CompressedTexture2D::7793475166690993316::1670331986::1720048968::1::::<><>::
+Dead.png::CompressedTexture2D::4432928949590385241::1670331689::1720048968::1::::<><>::
+Hurt.png::CompressedTexture2D::4482378064866325::1670331647::1720048968::1::::<><>::
+Idle.png::CompressedTexture2D::9044531323478654812::1670331064::1720048968::1::::<><>::
+Jump.png::CompressedTexture2D::7972427289726639905::1670331576::1720048968::1::::<><>::
+Magic_arrow.png::CompressedTexture2D::4629671222864370959::1670331534::1720048968::1::::<><>::
+Magic_sphere.png::CompressedTexture2D::7814116571339457313::1670331481::1720048968::1::::<><>::
+Run.png::CompressedTexture2D::1890205843792441732::1670331268::1720048968::1::::<><>::
+Walk.png::CompressedTexture2D::199298730259263398::1670331122::1720048968::1::::<><>::
