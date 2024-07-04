@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Wizards_Quest"
+run/main_scene="res://entities_scenes/main_character.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

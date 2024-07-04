@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://bqvwe35l0ects"]
+[gd_scene load_steps=86 format=3 uid="uid://bqvwe35l0ects"]
 
 [ext_resource type="Texture2D" uid="uid://qorwqr7cbnn1" path="res://sprites/Fire vizard/Idle.png" id="1_8cvv3"]
 [ext_resource type="Texture2D" uid="uid://ixx62y85wea3" path="res://sprites/Fire vizard/Attack_1.png" id="1_n55ii"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://d1wfcg2d0x0ak" path="res://sprites/Fire vizard/Flame_jet.png" id="6_234h7"]
 [ext_resource type="Texture2D" uid="uid://cci2nqoahlt3n" path="res://sprites/Fire vizard/Jump.png" id="8_ne3kg"]
 [ext_resource type="Texture2D" uid="uid://412wnjef158a" path="res://sprites/Fire vizard/Run.png" id="9_np14p"]
+[ext_resource type="Texture2D" uid="uid://b6cw1vsgjibce" path="res://sprites/Bars/healthbarUnder.png" id="12_hov5m"]
+[ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="12_slmdk"]
+[ext_resource type="Texture2D" uid="uid://c73the8thk1gm" path="res://sprites/Bars/healthbarProgress.png" id="13_cacjr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuofy"]
 size = Vector2(32, 69)
@@ -552,17 +555,28 @@ animations = [{
 }]
 
 [node name="Main_Character" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_suile")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-15, 29.5)
 shape = SubResource("RectangleShape2D_uuofy")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_ybs6v")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.217552
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
+offset_left = -42.0
+offset_top = -19.0
+offset_right = 22.0
+offset_bottom = 21.0
+texture_under = ExtResource("12_hov5m")
+texture_progress = ExtResource("13_cacjr")
+script = ExtResource("12_slmdk")
+player = NodePath("..")
