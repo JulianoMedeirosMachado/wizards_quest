@@ -499,7 +499,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -567,9 +567,9 @@ shape = SubResource("RectangleShape2D_uuofy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_ybs6v")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.217552
+frame_progress = 0.557898
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
 offset_left = -42.0
