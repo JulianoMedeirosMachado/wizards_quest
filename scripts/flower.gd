@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	if entered == true:
 		print('found 0')
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("accept"):
 			found()
 
 func found():
