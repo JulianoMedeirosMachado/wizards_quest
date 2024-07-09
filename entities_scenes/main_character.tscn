@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bqvwe35l0ects"]
+[gd_scene load_steps=87 format=3 uid="uid://bqvwe35l0ects"]
 
 [ext_resource type="Texture2D" uid="uid://qorwqr7cbnn1" path="res://sprites/Fire vizard/Idle.png" id="1_8cvv3"]
 [ext_resource type="Texture2D" uid="uid://ixx62y85wea3" path="res://sprites/Fire vizard/Attack_1.png" id="1_n55ii"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b6cw1vsgjibce" path="res://sprites/Bars/healthbarUnder.png" id="12_hov5m"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="12_slmdk"]
 [ext_resource type="Texture2D" uid="uid://c73the8thk1gm" path="res://sprites/Bars/healthbarProgress.png" id="13_cacjr"]
+[ext_resource type="Script" path="res://scripts/herbs.gd" id="15_7mocj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuofy"]
 size = Vector2(32, 69)
@@ -557,6 +558,7 @@ animations = [{
 [node name="Main_Character" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 5
 script = ExtResource("1_suile")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -580,3 +582,11 @@ texture_under = ExtResource("12_hov5m")
 texture_progress = ExtResource("13_cacjr")
 script = ExtResource("12_slmdk")
 player = NodePath("..")
+
+[node name="Herbs" type="Label" parent="Player" groups=["herbs"]]
+offset_left = 392.0
+offset_top = -306.0
+offset_right = 556.0
+offset_bottom = -283.0
+size_flags_horizontal = 8
+script = ExtResource("15_7mocj")
