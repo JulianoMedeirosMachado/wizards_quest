@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://p5yf4rn7q7d7"]
+
+[ext_resource type="Script" path="res://scripts/dummy.gd" id="1_bdobc"]
+[ext_resource type="Texture2D" uid="uid://ei85ahw502mk" path="res://sprites/Training Dummy/Training Dummy Sprite Sheet.png" id="1_kpryl"]
+[ext_resource type="Texture2D" uid="uid://b6cw1vsgjibce" path="res://sprites/Bars/healthbarUnder.png" id="2_6bph0"]
+[ext_resource type="Texture2D" uid="uid://c73the8thk1gm" path="res://sprites/Bars/healthbarProgress.png" id="3_3ucaa"]
+[ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="4_2ndpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cff41"]
+size = Vector2(26, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wh1t"]
+atlas = ExtResource("1_kpryl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d4hk"]
+atlas = ExtResource("1_kpryl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1mkr"]
+atlas = ExtResource("1_kpryl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p24ud"]
+atlas = ExtResource("1_kpryl")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4x82"]
+atlas = ExtResource("1_kpryl")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ks1fs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wh1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d4hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1mkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p24ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4x82")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="dummy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_bdobc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_cff41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_ks1fs")
+animation = &"hit"
+frame = 4
+frame_progress = 0.85378
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D" node_paths=PackedStringArray("player")]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 16.0
+texture_under = ExtResource("2_6bph0")
+texture_progress = ExtResource("3_3ucaa")
+script = ExtResource("4_2ndpw")
+player = NodePath("..")
