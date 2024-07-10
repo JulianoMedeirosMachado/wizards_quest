@@ -6,10 +6,10 @@ Em Wizard's Quest, você joga como um jovem mago chamado Elric, que deve salvar 
 ## Objetivos
 
 ### Fáceis
-- [X] Coleta de ervas mágicas para poções
-- [X] Treinamento de feitiços básicos
+- ✅ Coleta de ervas mágicas para poções
+- ✅ Treinamento de feitiços básicos
 - [X] Defesa de uma vila contra criaturas pequenas
-- [X] Resgate de aldeões capturados
+- ✅ Resgate de aldeões capturados
 
 ### Difíceis
 - [X] Exploração de uma floresta encantada
