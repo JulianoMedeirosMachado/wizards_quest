@@ -11,6 +11,9 @@ signal healthChanged
 @onready var flame_jet = $Area2D/flame_jet
 @onready var fireball = $Area2D/fireball
 @onready var fireball_sprite = $AnimatedSprite2D2
+@onready var area_2d = $Area2D
+@onready var collision_character = $CollisionShape2D
+@onready var label_health = $TextureProgressBar
 @export var max_health = 100
 @onready var currentHealth: int = max_health
 var attack = false
@@ -88,10 +91,19 @@ func _physics_process(delta):
 		sprite.animation = 'idle'
 		
 	if velocity.x > 0 and velocity.y == 0 and attack == false:
+		label_health.position.x = -42
+		collision_character.position.x = -15
+		area_2d.scale.x = 1
+		fireball_sprite.flip_h = false
 		sprite.flip_h = false
 		sprite.animation = 'walk'
 		
 	if velocity.x < 0 and velocity.y == 0 and attack == false:
+		label_health.position.x = -25
+		collision_character.position.x = 7
+		collision_character.scale.x = -1
+		area_2d.scale.x = -1
+		fireball_sprite.flip_h = true
 		sprite.flip_h = true
 		sprite.animation = 'walk'
 	
