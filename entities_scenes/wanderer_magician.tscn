@@ -151,8 +151,11 @@ func health_update(dmg):
 	print(currentHealth)
 	if currentHealth < 0:
 		var castle_level = get_tree().get_first_node_in_group(\"CastleLevel\")
+		var village_level = get_tree().get_first_node_in_group(\"village\")
 		if castle_level and \"CastleLevel\" in castle_level.get_groups():
 			castle_level.enemies -= 1
+		if village_level and \"village\" in village_level.get_groups():
+			village_level.enemies -= 1
 		death = true
 		sprite.play('death')
 		await get_tree().create_timer(1).timeout
