@@ -21,6 +21,12 @@ Em Wizard's Quest, você joga como um jovem mago chamado Elric, que deve salvar 
 - ✅ Batalha contra o necromante chefe (alguma coisa movendo IA para dificultar)
 - ✅ Defesa do castelo contra um exército de criaturas das trevas
 
+## Dependências
+
+- [Godot Engine](https://godotengine.org/) 3.5 ou superior
+- [Godot Asset Library](https://godotengine.org/asset-library/asset) para assets adicionais
+- Sistema Operacional: Windows, macOS ou Linux
+
 ## Instalação
 
 Siga os passos abaixo para configurar o ambiente do jogo:
