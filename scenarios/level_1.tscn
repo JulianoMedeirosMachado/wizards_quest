@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjnvway5w23xa"]
+[gd_scene load_steps=27 format=3 uid="uid://cjnvway5w23xa"]
 
 [ext_resource type="Texture2D" uid="uid://dnhgjvj5usdac" path="res://sprites/levels/sky.png" id="1_6nev5"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_fg87s"]
@@ -208,6 +208,12 @@ size = Vector2(37, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdtc3"]
 size = Vector2(36, 53)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aao7j"]
+size = Vector2(20, 576)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhehb"]
+size = Vector2(18, 483)
+
 [node name="level1" type="Node2D" groups=["herbs", "level_1"]]
 script = ExtResource("1_kkc6p")
 
@@ -215,11 +221,11 @@ script = ExtResource("1_kkc6p")
 position = Vector2(12, 47)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(-79.341, 266.232)
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-28, -43)
+position = Vector2(-134, 240)
 scale = Vector2(2, 2)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(688, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
@@ -228,8 +234,9 @@ texture = ExtResource("1_6nev5")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-28, -43)
+position = Vector2(-134, 240)
 scale = Vector2(2, 2)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(688, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
@@ -238,8 +245,9 @@ texture = ExtResource("2_1m2a8")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-28, -43)
+position = Vector2(-134, 240)
 scale = Vector2(2, 2)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(634, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
@@ -248,8 +256,9 @@ texture = ExtResource("3_b4yhu")
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-28, -43)
+position = Vector2(-134, 240)
 scale = Vector2(2, 2)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(688, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -258,8 +267,9 @@ texture = ExtResource("4_1i4h2")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-28, -43)
+position = Vector2(-134, 240)
 scale = Vector2(2, 2)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(688, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
@@ -325,6 +335,8 @@ position = Vector2(950, -2)
 
 [node name="Artifact" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
 position = Vector2(1604, 97)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("16_t7v2s")
 level_var = NodePath("..")
 
@@ -362,6 +374,16 @@ shape = SubResource("RectangleShape2D_j35x4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner/Area2D"]
 position = Vector2(10, -8.5)
 shape = SubResource("RectangleShape2D_xdtc3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-42, -34)
+shape = SubResource("RectangleShape2D_aao7j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1721, -94)
+shape = SubResource("RectangleShape2D_jhehb")
 
 [connection signal="body_entered" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_exited"]
