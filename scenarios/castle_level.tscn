@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6mfnj67kg0w"]
+[gd_scene load_steps=12 format=3 uid="uid://c6mfnj67kg0w"]
 
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_jxsb8"]
+[ext_resource type="Script" path="res://scripts/castle_level.gd" id="1_pbbqk"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="2_0vixt"]
 [ext_resource type="Texture2D" uid="uid://cio5jfpvctagd" path="res://sprites/levels/Battleground2.png" id="3_sdjd3"]
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="4_5xbgr"]
 [ext_resource type="PackedScene" uid="uid://bn2a0w7nn3tql" path="res://entities_scenes/necromancer.tscn" id="5_6gsj2"]
 [ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="6_16tjc"]
+[ext_resource type="Script" path="res://scripts/wanderer_magician_counter.gd" id="6_tomcd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glbmt"]
 texture = ExtResource("2_0vixt")
@@ -149,7 +151,8 @@ sources/0 = SubResource("TileSetAtlasSource_glbmt")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phrr3"]
 size = Vector2(82, 483)
 
-[node name="Castle_level" type="Node2D"]
+[node name="Castle_level" type="Node2D" groups=["CastleLevel", "enemies"]]
+script = ExtResource("1_pbbqk")
 
 [node name="Main_Character" parent="." instance=ExtResource("1_jxsb8")]
 position = Vector2(41, -1)
@@ -181,17 +184,32 @@ shape = SubResource("RectangleShape2D_phrr3")
 position = Vector2(1752, -97)
 shape = SubResource("RectangleShape2D_phrr3")
 
-[node name="wanderer_magician" parent="." instance=ExtResource("4_5xbgr")]
+[node name="wanderer_magician" parent="." node_paths=PackedStringArray("level", "enemie") instance=ExtResource("4_5xbgr")]
 position = Vector2(1216, 1)
+script = ExtResource("6_tomcd")
+level = NodePath("..")
+enemie = NodePath(".")
 
-[node name="wanderer_magician2" parent="." instance=ExtResource("4_5xbgr")]
+[node name="wanderer_magician2" parent="." node_paths=PackedStringArray("level", "enemie") instance=ExtResource("4_5xbgr")]
 position = Vector2(1083, 1)
+script = ExtResource("6_tomcd")
+level = NodePath("..")
+enemie = NodePath(".")
 
-[node name="wanderer_magician3" parent="." instance=ExtResource("5_6gsj2")]
+[node name="wanderer_magician3" parent="." node_paths=PackedStringArray("level", "enemie") instance=ExtResource("5_6gsj2")]
 position = Vector2(1666, 1)
+script = ExtResource("6_tomcd")
+level = NodePath("..")
+enemie = NodePath(".")
 
-[node name="wanderer_magician4" parent="." instance=ExtResource("6_16tjc")]
+[node name="wanderer_magician4" parent="." node_paths=PackedStringArray("level", "enemie") instance=ExtResource("6_16tjc")]
 position = Vector2(1319, 1)
+script = ExtResource("6_tomcd")
+level = NodePath("..")
+enemie = NodePath(".")
 
-[node name="wanderer_magician5" parent="." instance=ExtResource("6_16tjc")]
+[node name="wanderer_magician5" parent="." node_paths=PackedStringArray("level", "enemie") instance=ExtResource("6_16tjc")]
 position = Vector2(1438, -1)
+script = ExtResource("6_tomcd")
+level = NodePath("..")
+enemie = NodePath(".")

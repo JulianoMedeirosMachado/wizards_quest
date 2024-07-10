@@ -702,7 +702,8 @@ position = Vector2(21, 14.5)
 shape = SubResource("RectangleShape2D_os02r")
 disabled = true
 
-[node name="Herbs" type="Label" parent="Player" groups=["herbs"]]
+[node name="Herbs" type="Label" parent="Player" groups=["enemies", "herbs"]]
+visible = false
 offset_left = 392.0
 offset_top = -306.0
 offset_right = 556.0
