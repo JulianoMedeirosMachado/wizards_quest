@@ -15,5 +15,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if enemies == 0:
+		get_tree().change_scene_to_file("res://scenarios/ending.tscn")
 		pass
 	pass

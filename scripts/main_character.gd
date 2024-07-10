@@ -16,7 +16,7 @@ signal healthChanged
 @onready var area_2d = $Area2D
 @onready var collision_character = $CollisionShape2D
 @onready var label_health = $TextureProgressBar
-@export var max_health = 100
+@export var max_health = 1000
 @onready var currentHealth: int = max_health
 var dmg_taken = false
 var death = false
@@ -27,7 +27,6 @@ const JUMP_VELOCITY = -190.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentHealth -=50 #Testing if the health bar is working by setting half of HP
 	healthChanged.emit() #Emit signal to update health bar
 	fireball_sprite.hide()
 	pass # Replace with function body.
@@ -143,4 +142,5 @@ func health_update(dmg):
 			death = true
 			sprite.play('death')
 			await get_tree().create_timer(1).timeout
+			get_tree().change_scene_to_file("res://scenarios/death.tscn")
 			

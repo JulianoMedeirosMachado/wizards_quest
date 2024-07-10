@@ -50,7 +50,6 @@ const JUMP_VELOCITY = -190.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentHealth -=50 #Testing if the health bar is working by setting half of HP
 	healthChanged.emit() #Emit signal to update health bar
 	compound_attack.hide()
 	pass # Replace with function body.
