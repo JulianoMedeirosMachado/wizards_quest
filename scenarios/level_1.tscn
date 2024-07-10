@@ -11,21 +11,15 @@
 [ext_resource type="Script" path="res://scripts/flower1.gd" id="9_seop5"]
 [ext_resource type="Script" path="res://scripts/flower.gd" id="10_s2hyj"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="11_86x8h"]
-[ext_resource type="Script" path="res://scripts/villager.gd" id="11_q3olw"]
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="12_4g0ca"]
 [ext_resource type="Texture2D" uid="uid://dn5knbi4gaxsr" path="res://sprites/prisoner/Man.png" id="12_05yjm"]
 [ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="13_xclrc"]
+[ext_resource type="Script" path="res://scripts/Prisoner.gd" id="16_nqb06"]
 [ext_resource type="Script" path="res://scripts/Artifact.gd" id="16_t7v2s"]
 [ext_resource type="Texture2D" uid="uid://dpowt80hwa8vo" path="res://sprites/artifact/artifact.png" id="17_img76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36blu"]
 size = Vector2(15, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpkxf"]
-size = Vector2(32, 51)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_udbcx"]
-size = Vector2(32, 50)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wv311"]
 texture = ExtResource("11_86x8h")
@@ -208,6 +202,12 @@ size = Vector2(19, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlp5d"]
 size = Vector2(19, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j35x4"]
+size = Vector2(37, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdtc3"]
+size = Vector2(36, 53)
+
 [node name="level1" type="Node2D" groups=["herbs", "level_1"]]
 script = ExtResource("1_kkc6p")
 
@@ -311,35 +311,6 @@ shape = SubResource("RectangleShape2D_36blu")
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
-[node name="Prisoner" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(159, 127)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("11_q3olw")
-level_var = NodePath("..")
-
-[node name="Sprite2D" type="Sprite2D" parent="Prisoner"]
-position = Vector2(1054.19, -41.0625)
-scale = Vector2(1.68125, 1.48214)
-texture = ExtResource("12_05yjm")
-
-[node name="Area2D" type="Area2D" parent="Prisoner"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner/Area2D"]
-position = Vector2(1053, -40.5)
-shape = SubResource("RectangleShape2D_lpkxf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner"]
-position = Vector2(1053, -41)
-shape = SubResource("RectangleShape2D_udbcx")
-
-[node name="Label" type="Label" parent="Prisoner"]
-offset_left = 1031.0
-offset_top = -89.0
-offset_right = 1075.0
-offset_bottom = -66.0
-text = "HELP!"
-
 [node name="TileMap2" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_dh1kn")
@@ -370,11 +341,33 @@ shape = SubResource("RectangleShape2D_ysuv1")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_qlp5d")
 
+[node name="Prisoner" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(1211, 93)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("16_nqb06")
+level_var = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Prisoner"]
+position = Vector2(8.5, -10.25)
+scale = Vector2(1.85, 1.58571)
+texture = ExtResource("12_05yjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner"]
+position = Vector2(10.5, -9)
+shape = SubResource("RectangleShape2D_j35x4")
+
+[node name="Area2D" type="Area2D" parent="Prisoner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner/Area2D"]
+position = Vector2(10, -8.5)
+shape = SubResource("RectangleShape2D_xdtc3")
+
 [connection signal="body_entered" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Flower1/Area2D" to="Flower1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flower1/Area2D" to="Flower1" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Artifact/Area2D" to="Artifact" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Artifact/Area2D" to="Artifact" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_exited"]
