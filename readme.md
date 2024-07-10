@@ -8,7 +8,7 @@ Em Wizard's Quest, você joga como um jovem mago chamado Elric, que deve salvar 
 ### Fáceis
 - ✅ Coleta de ervas mágicas para poções
 - ✅ Treinamento de feitiços básicos
-- [X] Defesa de uma vila contra criaturas pequenas
+- ✅ Defesa de uma vila contra criaturas pequenas
 - ✅ Resgate de aldeões capturados
 
 ### Difíceis
