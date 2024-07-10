@@ -15,7 +15,7 @@ Em Wizard's Quest, você joga como um jovem mago chamado Elric, que deve salvar 
 - ✅ Exploração de uma floresta encantada
 - [X] Combate contra um dragão
 - ✅ Recuperação de um artefato mágico roubado
-- [X] Infiltração em uma torre de magos corrompidos
+- ✅ Infiltração em uma torre de magos corrompidos
 
 ### Muito Difíceis
 - ✅ Batalha contra o necromante chefe (alguma coisa movendo IA para dificultar)
