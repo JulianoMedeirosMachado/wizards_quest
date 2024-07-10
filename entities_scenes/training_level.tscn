@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dld5qdfx0cq1"]
+[gd_scene load_steps=30 format=3 uid="uid://dld5qdfx0cq1"]
 
 [ext_resource type="Texture2D" uid="uid://d24k1qvww0ged" path="res://sprites/levels/background_night_parallax.jpg" id="1_rqn36"]
+[ext_resource type="Script" path="res://scripts/training_level.gd" id="1_sxifr"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="2_pdu8p"]
 [ext_resource type="PackedScene" uid="uid://p5yf4rn7q7d7" path="res://entities_scenes/dummy.tscn" id="3_opd7f"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="4_2whvr"]
+[ext_resource type="Script" path="res://scripts/portal_training.gd" id="5_1ryf6"]
+[ext_resource type="Texture2D" uid="uid://b4d65w2aljyjq" path="res://sprites/portal/portalRings1.png" id="5_avt7r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bh3o0"]
 texture = ExtResource("2_pdu8p")
@@ -183,7 +186,138 @@ sources/0 = SubResource("TileSetAtlasSource_bh3o0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6jsn"]
 size = Vector2(20, 453)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnkbo"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5riur"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6bf3"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53mqk"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqiaf"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cmum"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkx0o"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjbx"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryfeg"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xads"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xshjv"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skjwy"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rkhm"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhi4w"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nahi8"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei4c3"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12q46"]
+atlas = ExtResource("5_avt7r")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c11jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnkbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5riur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6bf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53mqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqiaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cmum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkx0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryfeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xads")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xshjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skjwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rkhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhi4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nahi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei4c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12q46")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cdt4"]
+size = Vector2(69, 72.5)
+
 [node name="training_level" type="Node2D"]
+script = ExtResource("1_sxifr")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(617.296, 369.407)
@@ -208,7 +342,7 @@ position = Vector2(837, 56)
 position = Vector2(1127, -22)
 
 [node name="dummy4" parent="." instance=ExtResource("3_opd7f")]
-position = Vector2(1548, 104)
+position = Vector2(1392, 103)
 
 [node name="Main_Character" parent="." instance=ExtResource("4_2whvr")]
 position = Vector2(35, 48)
@@ -239,10 +373,10 @@ text = "Press 3 to execute
 a fire blast attack!"
 
 [node name="Label4" type="Label" parent="."]
-offset_left = 1497.0
-offset_top = -18.0
-offset_right = 1638.0
-offset_bottom = 31.0
+offset_left = 1343.0
+offset_top = -16.0
+offset_right = 1484.0
+offset_bottom = 33.0
 text = "Press 4 to execute 
 a fire ball attack!"
 
@@ -261,3 +395,31 @@ shape = SubResource("RectangleShape2D_j6jsn")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1721, -82)
 shape = SubResource("RectangleShape2D_j6jsn")
+
+[node name="Sprite_Portal" type="Area2D" parent="."]
+position = Vector2(1400, 0)
+script = ExtResource("5_1ryf6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite_Portal"]
+position = Vector2(226, 75)
+scale = Vector2(1.96875, 2.15625)
+sprite_frames = SubResource("SpriteFrames_c11jl")
+animation = &"portal"
+autoplay = "portal"
+frame = 12
+frame_progress = 0.451095
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite_Portal"]
+position = Vector2(226, 74)
+shape = SubResource("RectangleShape2D_1cdt4")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 1543.0
+offset_top = -22.0
+offset_right = 1703.0
+offset_bottom = 27.0
+text = "Press E on the portal 
+to advance"
+
+[connection signal="body_entered" from="Sprite_Portal" to="Sprite_Portal" method="_on_body_entered"]
+[connection signal="body_exited" from="Sprite_Portal" to="Sprite_Portal" method="_on_body_exited"]

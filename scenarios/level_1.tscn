@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjnvway5w23xa"]
+[gd_scene load_steps=48 format=3 uid="uid://cjnvway5w23xa"]
 
 [ext_resource type="Texture2D" uid="uid://dnhgjvj5usdac" path="res://sprites/levels/sky.png" id="1_6nev5"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_fg87s"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://scripts/Prisoner.gd" id="16_nqb06"]
 [ext_resource type="Script" path="res://scripts/Artifact.gd" id="16_t7v2s"]
 [ext_resource type="Texture2D" uid="uid://dpowt80hwa8vo" path="res://sprites/artifact/artifact.png" id="17_img76"]
+[ext_resource type="Script" path="res://scripts/portal_level1.gd" id="18_dpmo3"]
+[ext_resource type="Texture2D" uid="uid://b4d65w2aljyjq" path="res://sprites/portal/portalRings1.png" id="19_yt74t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36blu"]
 size = Vector2(15, 27)
@@ -214,6 +216,136 @@ size = Vector2(20, 576)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhehb"]
 size = Vector2(18, 483)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnkbo"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5riur"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6bf3"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53mqk"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqiaf"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cmum"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkx0o"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccjbx"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryfeg"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xads"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xshjv"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skjwy"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rkhm"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhi4w"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nahi8"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei4c3"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12q46"]
+atlas = ExtResource("19_yt74t")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6r4xm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnkbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5riur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6bf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53mqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqiaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cmum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkx0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccjbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryfeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xads")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xshjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skjwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rkhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhi4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nahi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei4c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12q46")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvwm3"]
+size = Vector2(69, 72.5)
+
 [node name="level1" type="Node2D" groups=["herbs", "level_1"]]
 script = ExtResource("1_kkc6p")
 
@@ -385,6 +517,24 @@ shape = SubResource("RectangleShape2D_aao7j")
 position = Vector2(1721, -94)
 shape = SubResource("RectangleShape2D_jhehb")
 
+[node name="Sprite_Portal" type="Area2D" parent="." node_paths=PackedStringArray("level")]
+position = Vector2(1400, 0)
+script = ExtResource("18_dpmo3")
+level = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite_Portal"]
+visible = false
+position = Vector2(226, 75)
+scale = Vector2(1.96875, 2.15625)
+sprite_frames = SubResource("SpriteFrames_6r4xm")
+animation = &"portal"
+autoplay = "portal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite_Portal"]
+position = Vector2(226, 74)
+shape = SubResource("RectangleShape2D_bvwm3")
+disabled = true
+
 [connection signal="body_entered" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Flower1/Area2D" to="Flower1" method="_on_area_2d_body_entered"]
@@ -393,3 +543,5 @@ shape = SubResource("RectangleShape2D_jhehb")
 [connection signal="body_exited" from="Artifact/Area2D" to="Artifact" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Sprite_Portal" to="Sprite_Portal" method="_on_body_entered"]
+[connection signal="body_exited" from="Sprite_Portal" to="Sprite_Portal" method="_on_body_exited"]
