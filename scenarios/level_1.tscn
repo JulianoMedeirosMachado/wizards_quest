@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjnvway5w23xa"]
+[gd_scene load_steps=25 format=3 uid="uid://cjnvway5w23xa"]
 
 [ext_resource type="Texture2D" uid="uid://dnhgjvj5usdac" path="res://sprites/levels/sky.png" id="1_6nev5"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_fg87s"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="12_4g0ca"]
 [ext_resource type="Texture2D" uid="uid://dn5knbi4gaxsr" path="res://sprites/prisoner/Man.png" id="12_05yjm"]
 [ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="13_xclrc"]
+[ext_resource type="Script" path="res://scripts/Artifact.gd" id="16_t7v2s"]
+[ext_resource type="Texture2D" uid="uid://dpowt80hwa8vo" path="res://sprites/artifact/artifact.png" id="17_img76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36blu"]
 size = Vector2(15, 27)
@@ -200,6 +202,12 @@ texture = ExtResource("11_86x8h")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_wv311")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysuv1"]
+size = Vector2(19, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlp5d"]
+size = Vector2(19, 26)
+
 [node name="level1" type="Node2D" groups=["herbs", "level_1"]]
 script = ExtResource("1_kkc6p")
 
@@ -259,73 +267,73 @@ position = Vector2(0, 53)
 texture = ExtResource("5_xdhrf")
 centered = false
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(30, 127)
+[node name="Flower2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(-30, 127)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_seop5")
 level_var = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Flower2"]
 position = Vector2(1187, -37)
 scale = Vector2(1.625, 2.5)
 texture = ExtResource("8_nyfl6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower2"]
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D2"]
+[node name="Area2D" type="Area2D" parent="Flower2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower2/Area2D"]
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(77, 127)
+[node name="Flower1" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(-76, 127)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_s2hyj")
 level_var = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Flower1"]
 position = Vector2(1187, -37)
 scale = Vector2(1.625, 2.5)
 texture = ExtResource("8_nyfl6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower1"]
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="Flower1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower1/Area2D"]
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(77, 127)
+[node name="Prisoner" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(159, 127)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("11_q3olw")
 level_var = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="Prisoner"]
 position = Vector2(1054.19, -41.0625)
 scale = Vector2(1.68125, 1.48214)
 texture = ExtResource("12_05yjm")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D3"]
+[node name="Area2D" type="Area2D" parent="Prisoner"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner/Area2D"]
 position = Vector2(1053, -40.5)
 shape = SubResource("RectangleShape2D_lpkxf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prisoner"]
 position = Vector2(1053, -41)
 shape = SubResource("RectangleShape2D_udbcx")
 
-[node name="Label" type="Label" parent="CharacterBody2D3"]
+[node name="Label" type="Label" parent="Prisoner"]
 offset_left = 1031.0
 offset_top = -89.0
 offset_right = 1075.0
@@ -344,9 +352,29 @@ position = Vector2(765.341, -3.23221)
 [node name="wanderer_magician2" parent="." instance=ExtResource("13_xclrc")]
 position = Vector2(950, -2)
 
-[connection signal="body_entered" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_body_exited"]
+[node name="Artifact" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(1604, 97)
+script = ExtResource("16_t7v2s")
+level_var = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Artifact"]
+texture = ExtResource("17_img76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Artifact"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ysuv1")
+
+[node name="Area2D" type="Area2D" parent="Artifact"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Artifact/Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_qlp5d")
+
+[connection signal="body_entered" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Flower2/Area2D" to="Flower2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Flower1/Area2D" to="Flower1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Flower1/Area2D" to="Flower1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Prisoner/Area2D" to="Prisoner" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Artifact/Area2D" to="Artifact" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Artifact/Area2D" to="Artifact" method="_on_area_2d_body_exited"]
