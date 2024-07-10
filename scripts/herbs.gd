@@ -2,6 +2,7 @@ extends Label
 
 @onready var level = get_tree().get_first_node_in_group("herbs")
 @onready var castle_level = get_tree().get_first_node_in_group("CastleLevel")
+@onready var village_level = get_tree().get_first_node_in_group("village")
 
 func _ready():
 	print("Label _ready() called")
@@ -10,6 +11,9 @@ func _ready():
 		self.show()
 	elif castle_level and "CastleLevel" in castle_level.get_groups():
 		print("Castle level detected")
+		self.show()
+	elif village_level and "village" in village_level.get_groups():
+		print("Village level detected")
 		self.show()
 	else:
 		print("No level detected")
@@ -24,5 +28,9 @@ func _process(delta):
 		self.text = "Enemies Left: " + str(castle_level.enemies)
 		if castle_level.enemies == 0:
 			self.text = "Castle cleared!!"
+	elif village_level and "village" in village_level.get_groups():
+		self.text = "Enemies Left: " + str(village_level.enemies)
+		if village_level.enemies == 0:
+			self.text = "Village cleared!!"
 	else:
 		self.hide()
