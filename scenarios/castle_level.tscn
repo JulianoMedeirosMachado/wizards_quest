@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6mfnj67kg0w"]
+[gd_scene load_steps=10 format=3 uid="uid://c6mfnj67kg0w"]
 
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_jxsb8"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="2_0vixt"]
 [ext_resource type="Texture2D" uid="uid://cio5jfpvctagd" path="res://sprites/levels/Battleground2.png" id="3_sdjd3"]
+[ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="4_5xbgr"]
+[ext_resource type="PackedScene" uid="uid://bn2a0w7nn3tql" path="res://entities_scenes/necromancer.tscn" id="5_6gsj2"]
+[ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="6_16tjc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glbmt"]
 texture = ExtResource("2_0vixt")
@@ -177,3 +180,18 @@ shape = SubResource("RectangleShape2D_phrr3")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1752, -97)
 shape = SubResource("RectangleShape2D_phrr3")
+
+[node name="wanderer_magician" parent="." instance=ExtResource("4_5xbgr")]
+position = Vector2(1216, 1)
+
+[node name="wanderer_magician2" parent="." instance=ExtResource("4_5xbgr")]
+position = Vector2(1083, 1)
+
+[node name="wanderer_magician3" parent="." instance=ExtResource("5_6gsj2")]
+position = Vector2(1666, 1)
+
+[node name="wanderer_magician4" parent="." instance=ExtResource("6_16tjc")]
+position = Vector2(1319, 1)
+
+[node name="wanderer_magician5" parent="." instance=ExtResource("6_16tjc")]
+position = Vector2(1438, -1)

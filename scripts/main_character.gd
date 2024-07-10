@@ -42,7 +42,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("attack1") and is_on_floor():
-		dmg = 10000
+		dmg = 200
 		attack = true
 		attack1_col.disabled = false
 		sprite.animation = 'attack_1'
