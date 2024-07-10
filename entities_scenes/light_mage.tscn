@@ -659,7 +659,8 @@ size = Vector2(24, 20)
 [node name="wanderer_magician" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-collision_layer = 9
+collision_layer = 73
+collision_mask = 65
 script = ExtResource("1_85ix5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
