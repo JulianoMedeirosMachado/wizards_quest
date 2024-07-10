@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjnvway5w23xa"]
+[gd_scene load_steps=21 format=3 uid="uid://cjnvway5w23xa"]
 
 [ext_resource type="Texture2D" uid="uid://dnhgjvj5usdac" path="res://sprites/levels/sky.png" id="1_6nev5"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_fg87s"]
@@ -11,11 +11,19 @@
 [ext_resource type="Script" path="res://scripts/flower1.gd" id="9_seop5"]
 [ext_resource type="Script" path="res://scripts/flower.gd" id="10_s2hyj"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="11_86x8h"]
+[ext_resource type="Script" path="res://scripts/villager.gd" id="11_q3olw"]
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="12_4g0ca"]
+[ext_resource type="Texture2D" uid="uid://dn5knbi4gaxsr" path="res://sprites/prisoner/Man.png" id="12_05yjm"]
 [ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="13_xclrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36blu"]
 size = Vector2(15, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpkxf"]
+size = Vector2(32, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udbcx"]
+size = Vector2(32, 50)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wv311"]
 texture = ExtResource("11_86x8h")
@@ -295,6 +303,35 @@ shape = SubResource("RectangleShape2D_36blu")
 position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
+position = Vector2(77, 127)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("11_q3olw")
+level_var = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D3"]
+position = Vector2(1054.19, -41.0625)
+scale = Vector2(1.68125, 1.48214)
+texture = ExtResource("12_05yjm")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3/Area2D"]
+position = Vector2(1053, -40.5)
+shape = SubResource("RectangleShape2D_lpkxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+position = Vector2(1053, -41)
+shape = SubResource("RectangleShape2D_udbcx")
+
+[node name="Label" type="Label" parent="CharacterBody2D3"]
+offset_left = 1031.0
+offset_top = -89.0
+offset_right = 1075.0
+offset_bottom = -66.0
+text = "HELP!"
+
 [node name="TileMap2" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_dh1kn")
@@ -311,3 +348,5 @@ position = Vector2(950, -2)
 [connection signal="body_exited" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_body_exited"]
