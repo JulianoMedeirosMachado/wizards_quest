@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjnvway5w23xa"]
+[gd_scene load_steps=17 format=3 uid="uid://cjnvway5w23xa"]
 
 [ext_resource type="Texture2D" uid="uid://dnhgjvj5usdac" path="res://sprites/levels/sky.png" id="1_6nev5"]
 [ext_resource type="PackedScene" uid="uid://bqvwe35l0ects" path="res://entities_scenes/main_character.tscn" id="1_fg87s"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/flower.gd" id="10_s2hyj"]
 [ext_resource type="Texture2D" uid="uid://cxyiaoep0cf7o" path="res://sprites/levels/Tileset.png" id="11_86x8h"]
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="12_4g0ca"]
+[ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="13_xclrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36blu"]
 size = Vector2(15, 27)
@@ -302,6 +303,9 @@ layer_0/tile_data = PackedInt32Array(524286, 1, 0, 524287, 65537, 0, 458752, 655
 
 [node name="wanderer_magician" parent="." instance=ExtResource("12_4g0ca")]
 position = Vector2(765.341, -3.23221)
+
+[node name="wanderer_magician2" parent="." instance=ExtResource("13_xclrc")]
+position = Vector2(950, -2)
 
 [connection signal="body_entered" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_body_exited"]

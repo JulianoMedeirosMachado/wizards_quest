@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Light_mage
 
 @onready var sprite = $AnimatedSprite2D
 
