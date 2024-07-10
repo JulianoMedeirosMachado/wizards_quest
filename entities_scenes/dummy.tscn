@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="4_2ndpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cff41"]
-size = Vector2(26, 22)
+size = Vector2(67, 61)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wh1t"]
 atlas = ExtResource("1_kpryl")
@@ -58,20 +58,22 @@ animations = [{
 script = ExtResource("1_bdobc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 2)
+position = Vector2(21.5, -24.5)
 shape = SubResource("RectangleShape2D_cff41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(23, -30)
+scale = Vector2(2.4375, 2.875)
 sprite_frames = SubResource("SpriteFrames_ks1fs")
 animation = &"hit"
 frame = 4
 frame_progress = 0.85378
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D" node_paths=PackedStringArray("player")]
-offset_left = -32.0
-offset_top = -24.0
-offset_right = 32.0
-offset_bottom = 16.0
+offset_left = -10.0
+offset_top = -67.0
+offset_right = 54.0
+offset_bottom = -27.0
 texture_under = ExtResource("2_6bph0")
 texture_progress = ExtResource("3_3ucaa")
 script = ExtResource("4_2ndpw")
