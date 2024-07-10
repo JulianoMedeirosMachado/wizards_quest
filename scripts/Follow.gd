@@ -16,13 +16,11 @@ func Physics_Update(delta: float):
 
 	if direction_global.length() < 200:
 		enemy.velocity.x = sign(direction) * move_speed
-		print('following')
 	else:
 		enemy.velocity.x = 0
 		
 	if direction_global.length() > 200:
 		Transitioned.emit(self, 'idle')
-		print('idle')
 		
 	if direction_global.length() < 40:
 		Transitioned.emit(self, 'Attack')

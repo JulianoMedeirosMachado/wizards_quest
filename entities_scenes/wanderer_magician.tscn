@@ -33,9 +33,9 @@ signal healthChanged
 
 @onready var attack1_col = $Area2D/attack_collision1
 @onready var attack2_col = $Area2D/attack_collision2
-@onready var flame_jet = $Area2D/arrow
-@onready var fireball = $Area2D/sphere
-@onready var fireball_sprite = $AnimatedSprite2D2
+@onready var arrow = $Area2D/arrow
+@onready var sphere = $Area2D/sphere
+@onready var compound_attack = $AnimatedSprite2D2
 @onready var area_2d = $Area2D
 @onready var collision_character = $CollisionShape2D
 @onready var label_health = $TextureProgressBar
@@ -52,7 +52,7 @@ const JUMP_VELOCITY = -190.0
 func _ready():
 	currentHealth -=50 #Testing if the health bar is working by setting half of HP
 	healthChanged.emit() #Emit signal to update health bar
-	fireball_sprite.hide()
+	compound_attack.hide()
 	pass # Replace with function body.
 
 
@@ -68,19 +68,16 @@ func _physics_process(delta):
 		sprite.animation = 'idle'
 		
 	if velocity.x > 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
-		label_health.position.x = -42
-		collision_character.position.x = -15
-		area_2d.scale.x = 1
-		fireball_sprite.flip_h = false
+		compound_attack.position.x = 7
+		area_2d.position.x = 0
+		compound_attack.flip_h = false
 		sprite.flip_h = false
 		sprite.animation = 'walk'
 		
 	if velocity.x < 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
-		label_health.position.x = -25
-		collision_character.position.x = 7
-		collision_character.scale.x = -1
-		area_2d.scale.x = -1
-		fireball_sprite.flip_h = true
+		compound_attack.position.x = -37
+		area_2d.position.x = -66
+		compound_attack.flip_h = true
 		sprite.flip_h = true
 		sprite.animation = 'walk'
 	
@@ -99,6 +96,42 @@ func attack1():
 	await get_tree().create_timer(1.0).timeout
 	attack = false
 	attack1_col.disabled = true
+	pass
+
+func attack2():	
+	dmg = 10
+	attack = true
+	attack2_col.disabled = false
+	sprite.animation = 'attack_2'
+	await get_tree().create_timer(1.0).timeout
+	attack = false
+	attack2_col.disabled = true
+	pass
+
+func attack3():
+	dmg = 20
+	attack = true
+	arrow.disabled = false
+	sprite.animation = 'magic_arrow'
+	compound_attack.show()
+	compound_attack.play(\"magic_arrow\")
+	await get_tree().create_timer(1).timeout
+	compound_attack.hide()
+	attack = false
+	arrow.disabled = true
+	pass
+	
+func attack4():
+	dmg = 20
+	attack = true
+	arrow.disabled = false
+	sprite.animation = 'magic_sphere'
+	compound_attack.show()
+	compound_attack.play(\"magic_sphere\")
+	await get_tree().create_timer(1).timeout
+	compound_attack.hide()
+	attack = false
+	arrow.disabled = true
 	pass
 
 func _on_area_2d_body_entered(body):
@@ -492,7 +525,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -660,7 +693,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"magic_sphere",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -799,7 +832,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dgpcd")
 }],
-"loop": false,
+"loop": true,
 "name": &"magic_arrow",
 "speed": 5.0
 }, {
@@ -833,7 +866,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"magic_sphere",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61caw"]
@@ -861,16 +894,16 @@ shape = SubResource("RectangleShape2D_uuofy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-15, 0)
 sprite_frames = SubResource("SpriteFrames_ybs6v")
-animation = &"death"
+animation = &"magic_sphere"
 autoplay = "idle"
+frame = 11
+frame_progress = 0.521526
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]
-visible = false
 position = Vector2(7, 14)
 sprite_frames = SubResource("SpriteFrames_o2tcd")
 animation = &"magic_arrow"
-frame = 4
-frame_progress = 0.914986
+frame_progress = 0.678601
 
 [node name="Area2D" type="Area2D" parent="Player"]
 collision_layer = 16

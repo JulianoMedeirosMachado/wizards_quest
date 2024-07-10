@@ -14,8 +14,21 @@ func Physics_Update(delta: float):
 
 	while direction_global.length() > 10 and enemy.attack == false and enemy.dmg_taken == false and enemy.death == false:
 		enemy.velocity.x = 0
-		enemy.attack1()
-		
+		var attack_rand = randi_range(1,4)
+		match attack_rand:
+			1:
+				enemy.attack1()
+				print('1')
+			2:
+				enemy.attack2()
+				print('2')
+			3:
+				enemy.attack3()
+				print('3')
+			4:
+				enemy.attack4()
+				print('4')
+				
 	if direction_global.length() > 20:
 		Transitioned.emit(self, 'idle')	
 	
