@@ -655,8 +655,8 @@ size = Vector2(26, 41)
 
 [node name="Main_Character" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-collision_layer = 5
+[node name="Player" type="CharacterBody2D" parent="." groups=["main_character"]]
+collision_layer = 21
 script = ExtResource("1_suile")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -667,7 +667,7 @@ shape = SubResource("RectangleShape2D_uuofy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_ybs6v")
-animation = &"attack_1"
+animation = &"death"
 autoplay = "idle"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]

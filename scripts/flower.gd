@@ -10,14 +10,12 @@ func _ready():
 
 func _process(delta):
 	if entered == true:
-		print('found 0')
 		if Input.is_action_just_pressed("accept"):
 			found()
 
 func found():
 	level_var.herbs_counter -= 1
 	queue_free()
-	print('found')
 	
 func _on_area_2d_body_entered(body):
 	entered = true

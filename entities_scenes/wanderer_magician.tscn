@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://d0kj6p2ge2llo"]
+[gd_scene load_steps=120 format=3 uid="uid://d0kj6p2ge2llo"]
 
 [ext_resource type="Texture2D" uid="uid://yu7maknesib" path="res://sprites/Wanderer Magican/Attack_1.png" id="1_i5klu"]
 [ext_resource type="Texture2D" uid="uid://casnni1jlsot6" path="res://sprites/Wanderer Magican/Attack_2.png" id="2_42t44"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://c73the8thk1gm" path="res://sprites/Bars/healthbarProgress.png" id="15_ibpgj"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="16_4t6pa"]
 [ext_resource type="Script" path="res://scripts/State_Machine.gd" id="16_eia0m"]
+[ext_resource type="Script" path="res://scripts/EnemyIdle.gd" id="17_qbsuk"]
+[ext_resource type="Script" path="res://scripts/Follow.gd" id="18_vwlhj"]
+[ext_resource type="Script" path="res://scripts/EnemyAttack.gd" id="19_mvwq6"]
 
 [sub_resource type="GDScript" id="GDScript_4n863"]
 script/source = "extends CharacterBody2D
@@ -38,6 +41,8 @@ signal healthChanged
 @onready var label_health = $TextureProgressBar
 @export var max_health = 100
 @onready var currentHealth: int = max_health
+var dmg_taken = false
+var death = false
 var attack = false
 var SPEED = 300.0
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
@@ -59,10 +64,10 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if velocity.x == 0 and attack == false:
+	if velocity.x == 0 and attack == false and dmg_taken == false and death == false:
 		sprite.animation = 'idle'
 		
-	if velocity.x > 0 and velocity.y == 0 and attack == false:
+	if velocity.x > 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
 		label_health.position.x = -42
 		collision_character.position.x = -15
 		area_2d.scale.x = 1
@@ -70,7 +75,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 		sprite.animation = 'walk'
 		
-	if velocity.x < 0 and velocity.y == 0 and attack == false:
+	if velocity.x < 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
 		label_health.position.x = -25
 		collision_character.position.x = 7
 		collision_character.scale.x = -1
@@ -86,6 +91,15 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func attack1():
+	dmg = 10
+	attack = true
+	attack1_col.disabled = false
+	sprite.animation = 'attack_1'
+	await get_tree().create_timer(1.0).timeout
+	attack = false
+	attack1_col.disabled = true
+	pass
 
 func _on_area_2d_body_entered(body):
 	print('contact')
@@ -93,14 +107,19 @@ func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
 	
 func health_update(dmg):
+	dmg_taken = true
 	sprite.play('dmg_taken')
+	await get_tree().create_timer(1).timeout
+	dmg_taken = false
 	currentHealth -= dmg
 	healthChanged.emit()
 	print('health change')
 	print(dmg)
 	print(currentHealth)
-	if currentHealth == 0:
-		sprite.play('dmg_taken')
+	if currentHealth < 0:
+		death = true
+		sprite.play('death')
+		await get_tree().create_timer(1).timeout
 		queue_free()
 "
 
@@ -441,7 +460,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_1",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -490,7 +509,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -832,22 +851,18 @@ size = Vector2(24, 20)
 [node name="wanderer_magician" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-collision_layer = 5
+collision_layer = 9
 script = SubResource("GDScript_4n863")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-15, 29.5)
 shape = SubResource("RectangleShape2D_uuofy")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-15, 0)
 sprite_frames = SubResource("SpriteFrames_ybs6v")
-animation = &"attack_2"
+animation = &"death"
 autoplay = "idle"
-frame = 6
-frame_progress = 0.199667
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Player"]
 visible = false
@@ -858,8 +873,8 @@ frame = 4
 frame_progress = 0.914986
 
 [node name="Area2D" type="Area2D" parent="Player"]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 16
+collision_mask = 16
 
 [node name="attack_collision1" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(19, 6.5)
@@ -891,7 +906,20 @@ texture_progress = ExtResource("15_ibpgj")
 script = ExtResource("16_4t6pa")
 player = NodePath("..")
 
-[node name="State_Machine" type="Node" parent="Player"]
+[node name="State_Machine" type="Node" parent="Player" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("16_eia0m")
+initial_state = NodePath("Follow")
+
+[node name="Idle" type="Node" parent="Player/State_Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("17_qbsuk")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="Player/State_Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("18_vwlhj")
+enemy = NodePath("../..")
+
+[node name="Attack" type="Node" parent="Player/State_Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("19_mvwq6")
+enemy = NodePath("../..")
 
 [connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]

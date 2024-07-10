@@ -18,6 +18,8 @@ signal healthChanged
 @onready var label_health = $TextureProgressBar
 @export var max_health = 100
 @onready var currentHealth: int = max_health
+var dmg_taken = false
+var death = false
 var attack = false
 var SPEED = 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -93,10 +95,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if velocity.x == 0 and attack == false:
+	if velocity.x == 0 and attack == false and dmg_taken == false and death == false:
 		sprite.animation = 'idle'
 		
-	if velocity.x > 0 and velocity.y == 0 and attack == false:
+	if velocity.x > 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
 		label_health.position.x = -42
 		collision_character.position.x = -15
 		area_2d.scale.x = 1
@@ -104,7 +106,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 		sprite.animation = 'walk'
 		
-	if velocity.x < 0 and velocity.y == 0 and attack == false:
+	if velocity.x < 0 and velocity.y == 0 and attack == false and dmg_taken == false and death == false:
 		label_health.position.x = -25
 		collision_character.position.x = 7
 		collision_character.scale.x = -1
@@ -127,12 +129,18 @@ func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
 	
 func health_update(dmg):
-	sprite.play('dmg_taken')
-	currentHealth -= dmg
-	healthChanged.emit()
-	print('health change')
-	print(dmg)
-	print(currentHealth)
-	if currentHealth == 0:
+	if death == false:
+		dmg_taken = true
 		sprite.play('dmg_taken')
-		queue_free()
+		await get_tree().create_timer(1).timeout
+		dmg_taken = false
+		currentHealth -= dmg
+		healthChanged.emit()
+		print('health change')
+		print(dmg)
+		print(currentHealth)
+		if currentHealth < 0:
+			death = true
+			sprite.play('death')
+			await get_tree().create_timer(1).timeout
+			
