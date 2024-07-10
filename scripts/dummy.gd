@@ -23,6 +23,9 @@ func _physics_process(delta):
 	pass
 
 func health_update(dmg):
-	dmg -= currentHealth
+	sprite.play('hit')
+	currentHealth -= dmg
 	healthChanged.emit()
 	print('health change')
+	print(dmg)
+	print(currentHealth)

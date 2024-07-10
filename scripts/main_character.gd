@@ -4,6 +4,8 @@ class_name Player
 
 @onready var sprite = $AnimatedSprite2D
 
+var dmg = 0
+
 signal healthChanged
 
 @onready var attack1_col = $Area2D/sword_collision1
@@ -38,6 +40,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("attack1") and is_on_floor():
+		dmg = 10000
 		attack = true
 		attack1_col.disabled = false
 		sprite.animation = 'attack_1'
@@ -47,6 +50,7 @@ func _physics_process(delta):
 		pass
 	
 	if Input.is_action_just_pressed("attack2") and is_on_floor():
+		dmg = 10
 		attack = true
 		attack2_col.disabled = false
 		sprite.animation = 'attack_2'
@@ -56,6 +60,7 @@ func _physics_process(delta):
 		pass
 		
 	if Input.is_action_just_pressed("flame_jet") and is_on_floor():
+		dmg = 15
 		attack = true
 		flame_jet.disabled = false
 		sprite.animation = 'flame_jet'
@@ -65,6 +70,7 @@ func _physics_process(delta):
 		pass
 		
 	if Input.is_action_just_pressed("fireball") and is_on_floor():
+		dmg = 20
 		attack = true
 		fireball.disabled = false
 		sprite.animation = 'fireball'
@@ -110,4 +116,23 @@ func _physics_process(delta):
 	if (velocity.y < 0 || velocity.y > 0):
 		sprite.animation = 'jump'
 
+	
+
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	print('contact')
+	body.health_update(dmg)
+	pass # Replace with function body.
+	
+func health_update(dmg):
+	sprite.play('dmg_taken')
+	currentHealth -= dmg
+	healthChanged.emit()
+	print('health change')
+	print(dmg)
+	print(currentHealth)
+	if currentHealth == 0:
+		sprite.play('dmg_taken')
+		queue_free()

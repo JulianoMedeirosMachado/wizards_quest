@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x4x82")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }]
@@ -55,6 +55,8 @@ animations = [{
 [node name="dummy" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_bdobc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
