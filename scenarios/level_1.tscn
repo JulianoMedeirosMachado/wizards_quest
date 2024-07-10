@@ -192,7 +192,7 @@ texture = ExtResource("11_86x8h")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_wv311")
 
-[node name="level1" type="Node2D" groups=["herbs"]]
+[node name="level1" type="Node2D" groups=["herbs", "level_1"]]
 script = ExtResource("1_kkc6p")
 
 [node name="Main_Character" parent="." instance=ExtResource("1_fg87s")]
@@ -252,7 +252,7 @@ texture = ExtResource("5_xdhrf")
 centered = false
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(0, -1)
+position = Vector2(30, 127)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_seop5")
@@ -274,7 +274,7 @@ position = Vector2(1185.5, -29.5)
 shape = SubResource("RectangleShape2D_36blu")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("level_var")]
-position = Vector2(-388, 79)
+position = Vector2(77, 127)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_s2hyj")
