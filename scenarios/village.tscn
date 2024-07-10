@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cwcj15rnkidl4" path="res://entities_scenes/light_mage.tscn" id="5_raxy5"]
 [ext_resource type="Script" path="res://scripts/wanderer_magician_counter.gd" id="6_vdqi6"]
 [ext_resource type="PackedScene" uid="uid://d0kj6p2ge2llo" path="res://entities_scenes/wanderer_magician.tscn" id="7_qvwdn"]
-[ext_resource type="Script" path="res://scripts/portal_level1.gd" id="8_t0u8i"]
+[ext_resource type="Script" path="res://scripts/village_portal.gd" id="8_uho5w"]
 [ext_resource type="Texture2D" uid="uid://b4d65w2aljyjq" path="res://sprites/portal/portalRings1.png" id="9_31vwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdcno"]
@@ -337,10 +337,9 @@ shape = SubResource("RectangleShape2D_mv8rw")
 position = Vector2(1842.5, 279)
 shape = SubResource("RectangleShape2D_v32nx")
 
-[node name="Sprite_Portal" type="Area2D" parent="." node_paths=PackedStringArray("level")]
+[node name="Sprite_Portal" type="Area2D" parent="."]
 position = Vector2(1445, 273)
-script = ExtResource("8_t0u8i")
-level = NodePath("..")
+script = ExtResource("8_uho5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite_Portal"]
 visible = false
