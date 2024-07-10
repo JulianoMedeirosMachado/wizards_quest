@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name VillageLevel
+class_name CastleLevel
 
 @onready var sprite_portal = $Sprite_Portal/AnimatedSprite2D
 @onready var portal = $Sprite_Portal/CollisionShape2D
@@ -15,6 +15,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if enemies == 0:
-		sprite_portal.visible = true
-		portal.disabled = false
+		pass
 	pass
